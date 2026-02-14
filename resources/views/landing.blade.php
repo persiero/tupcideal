@@ -17,16 +17,8 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         section { scroll-margin-top: 100px; }
-        #inicio { padding-top: 70px !important; }
-        @media (min-width: 1024px) {
-            #inicio { padding-top: 90px !important; }
-        }
-        #main-header {
-            background: white;
-        }
-        #main-header.scrolled {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-        }
+        #main-header { background: white; }
+        #main-header.scrolled { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
     </style>
 </head>
 <body class="bg-[#F8FAFC] min-h-screen font-sans text-slate-900 antialiased selection:bg-indigo-100 selection:text-indigo-700">
@@ -76,8 +68,8 @@
         </div>
     </header>
 
-    {{-- Cambios: pt-28 para compensar header fijo --}}
-    <section id="inicio" class="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+    {{-- Hero más compacto --}}
+    <section id="inicio" class="relative pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden">
         
         <div class="absolute inset-0 -z-10 overflow-hidden">
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-indigo-50/50 rounded-full blur-3xl opacity-60 mix-blend-multiply"></div>
@@ -88,7 +80,7 @@
             <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
                 
                 <div class="text-center md:text-left z-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wide mb-12 shadow-sm">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wide mb-6 shadow-sm">
                         <span class="relative flex h-2 w-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
@@ -96,13 +88,13 @@
                         Sistema Actualizado 2026
                     </div>
                     
-                    <h1 class="text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-[1.1]">
+                    <h1 class="text-4xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-[1.1]">
                         Tu PC Ideal <br>
                         {{-- Cambio de color a un gradiente más intenso --}}
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Sin Complicaciones</span>
                     </h1>
                     
-                    <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0 font-medium">
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed max-w-lg mx-auto md:mx-0 font-medium">
                         Olvídate de tecnicismos confusos. Responde 3 preguntas simples y nuestra IA diseñará la computadora perfecta para tu presupuesto.
                     </p>
                     
@@ -116,7 +108,7 @@
                         </a>
                     </div>
 
-                    <div class="mt-12 flex items-center justify-center md:justify-start gap-4 text-sm font-medium text-slate-500">
+                    <div class="mt-8 flex items-center justify-center md:justify-start gap-4 text-sm font-medium text-slate-500">
                         <div class="flex -space-x-3">
                             <img class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://i.pravatar.cc/100?u=a" alt="User">
                             <img class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://i.pravatar.cc/100?u=b" alt="User">
@@ -153,44 +145,79 @@
         </div>
     </section>
 
-    <!-- FEATURES -->
-    <section id="como-funciona" class="pt-8 pb-16 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12 text-slate-800">¿Cómo funciona?</h3>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-3xl">🎯</span>
-                    </div>
-                    <h4 class="font-bold text-lg mb-2">1. Define tu perfil</h4>
-                    <p class="text-slate-600">Estudiante, profesional, gamer... Selecciona tu uso principal</p>
+    <!-- WIZARD SECTION - PROTAGONISTA -->
+    <section id="wizard" class="py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 relative overflow-hidden">
+        <!-- Efectos decorativos -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-indigo-200 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-20"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10">
+            <!-- Título destacado -->
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-bold uppercase tracking-wide mb-4 shadow-lg animate-bounce" style="animation-duration: 2s;">
+                    <span>🎯</span>
+                    <span>Recomendador Inteligente</span>
                 </div>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4">
+                    Encuentra tu PC en <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">3 Pasos</span>
+                </h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                    Responde las preguntas y obtén una recomendación personalizada al instante
+                </p>
+            </div>
 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-3xl">💻</span>
-                    </div>
-                    <h4 class="font-bold text-lg mb-2">2. Elige movilidad</h4>
-                    <p class="text-slate-600">¿Laptop portátil o PC de escritorio potente?</p>
+            <!-- Wizard Container -->
+            <div class="bg-white rounded-3xl shadow-2xl p-8 lg:p-12 border-2 border-indigo-100 hover:shadow-indigo-200/50 transition-shadow duration-300">
+                <livewire:wizard />
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="mt-8 flex flex-wrap justify-center items-center gap-6 text-sm text-slate-600">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <span class="font-medium">100% Gratis</span>
                 </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-3xl">✅</span>
-                    </div>
-                    <h4 class="font-bold text-lg mb-2">3. Recibe recomendación</h4>
-                    <p class="text-slate-600">Especificaciones exactas y opción de cotizar por WhatsApp</p>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <span class="font-medium">Sin registro</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <span class="font-medium">Resultados instantáneos</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WIZARD SECTION -->
-    <section id="wizard" class="py-16 px-4 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-2xl p-8">
-                <livewire:wizard />
+    <!-- FEATURES -->
+    <section id="como-funciona" class="py-12 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-2xl font-bold text-center mb-8 text-slate-800">¿Cómo funciona?</h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h4 class="font-bold text-base mb-2">1. Define tu perfil</h4>
+                    <p class="text-sm text-slate-600">Estudiante, profesional, gamer... Selecciona tu uso principal</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">💻</span>
+                    </div>
+                    <h4 class="font-bold text-base mb-2">2. Elige movilidad</h4>
+                    <p class="text-sm text-slate-600">¿Laptop portátil o PC de escritorio potente?</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">✅</span>
+                    </div>
+                    <h4 class="font-bold text-base mb-2">3. Recibe recomendación</h4>
+                    <p class="text-sm text-slate-600">Especificaciones exactas y opción de cotizar por WhatsApp</p>
+                </div>
             </div>
         </div>
     </section>
@@ -409,8 +436,10 @@
 
                 <!-- Email -->
                 <a href="mailto:contacto@recomendadorpc.com" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition group">
-                    <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition text-5xl">
-                        📧
+                    <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
                     </div>
                     <h4 class="font-bold text-slate-800 mb-1">Email</h4>
                     <p class="text-sm text-slate-600">contacto@gmail.com</p>
@@ -418,8 +447,10 @@
 
                 <!-- Teléfono -->
                 <a href="tel:+51915391298" class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition group">
-                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition text-5xl">
-                        📱
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
                     </div>
                     <h4 class="font-bold text-slate-800 mb-1">Teléfono</h4>
                     <p class="text-sm text-slate-600">+51 915 391 298</p>

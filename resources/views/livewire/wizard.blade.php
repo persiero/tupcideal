@@ -1,28 +1,44 @@
 <div>
 
-    <div class="mb-8">
-        <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-            <div class="h-full bg-indigo-600 transition-all duration-500 ease-out" 
+    <!-- Barra de progreso mejorada -->
+    <div class="mb-10">
+        <div class="flex justify-between items-center mb-3">
+            <span class="text-sm font-bold text-slate-700">Paso {{ $step }} de 4</span>
+            <span class="text-xs text-slate-500">{{ $step * 25 }}% completado</span>
+        </div>
+        <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden shadow-inner">
+            <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500 ease-out rounded-full" 
                  style="width: {{ $step * 25 }}%"></div>
         </div>
-        <p class="text-right text-xs text-slate-500 mt-1">Paso {{ $step }} de 4</p>
     </div>
 
     @if ($step === 1)
         <div class="fade-in">
-            <h2 class="text-3xl font-bold text-center mb-2">¿Cuál será el uso principal?</h2>
-            <p class="text-center text-slate-500 mb-8">Elige la opción que mejor te describa.</p>
+            <div class="text-center mb-8">
+                <div class="inline-block p-2 bg-indigo-100 rounded-full mb-3">
+                    <span class="text-3xl">🎯</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-2 text-slate-900">¿Cuál será el uso principal?</h2>
+                <p class="text-slate-500">Elige la opción que mejor te describa</p>
+            </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 @foreach ($categories as $category)
                     <button wire:click="selectCategory({{ $category->id }})" 
-                            class="p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-indigo-500 hover:bg-indigo-50 transition-all group text-left shadow-sm">
-                        <h3 class="font-bold text-lg text-slate-800 group-hover:text-indigo-700">
-                            {{ $category->name }}
-                        </h3>
-                        @if($category->description)
-                            <p class="text-sm text-slate-400 mt-1">{{ $category->description }}</p>
-                        @endif
+                            class="group p-6 bg-gradient-to-br from-white to-slate-50 border-2 border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left">
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                💼
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-lg text-slate-800 group-hover:text-indigo-700 mb-1">
+                                    {{ $category->name }}
+                                </h3>
+                                @if($category->description)
+                                    <p class="text-sm text-slate-500">{{ $category->description }}</p>
+                                @endif
+                            </div>
+                        </div>
                     </button>
                 @endforeach
             </div>
@@ -31,19 +47,25 @@
 
     @if ($step === 2)
         <div class="fade-in">
-            <button wire:click="$set('step', 1)" class="text-sm text-slate-400 hover:text-slate-600 mb-4 flex items-center">
-                ← Volver al inicio
+            <button wire:click="$set('step', 1)" class="text-sm text-slate-500 hover:text-indigo-600 mb-6 flex items-center gap-2 font-medium transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                Volver
             </button>
 
-            <h2 class="text-2xl font-bold text-center mb-2">Profundicemos un poco...</h2>
-            <p class="text-center text-slate-500 mb-8">Selecciona tu área específica.</p>
+            <div class="text-center mb-8">
+                <div class="inline-block p-2 bg-purple-100 rounded-full mb-3">
+                    <span class="text-3xl">🔍</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-2 text-slate-900">Profundicemos un poco...</h2>
+                <p class="text-slate-500">Selecciona tu área específica</p>
+            </div>
 
             <div class="space-y-3">
                 @foreach ($subcategories as $sub)
                     <button wire:click="selectSubcategory({{ $sub->id }})" 
-                            class="w-full p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 hover:border-indigo-300 flex justify-between items-center transition-all shadow-sm">
-                        <span class="font-medium">{{ $sub->name }}</span>
-                        <span class="text-slate-300">→</span>
+                            class="group w-full p-5 bg-gradient-to-r from-white to-slate-50 border-2 border-slate-200 rounded-xl hover:border-purple-500 hover:shadow-lg transition-all duration-300 flex justify-between items-center">
+                        <span class="font-semibold text-slate-800 group-hover:text-purple-700">{{ $sub->name }}</span>
+                        <svg class="w-5 h-5 text-slate-300 group-hover:text-purple-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </button>
                 @endforeach
             </div>
@@ -52,25 +74,31 @@
 
     @if ($step === 3)
         <div class="fade-in">
-            <h2 class="text-2xl font-bold text-center mb-6">¿Necesitas movilidad?</h2>
+            <div class="text-center mb-8">
+                <div class="inline-block p-2 bg-blue-100 rounded-full mb-3">
+                    <span class="text-3xl">💼</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-2 text-slate-900">¿Necesitas movilidad?</h2>
+                <p class="text-slate-500">Elige según tu estilo de trabajo</p>
+            </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <button wire:click="selectMobility('LAPTOP')" class="p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-indigo-500 text-center transition-all hover:shadow-md">
-                    <div class="text-4xl mb-3">💻</div>
-                    <div class="font-bold">Sí, Laptop</div>
-                    <div class="text-xs text-slate-500 mt-1">Necesito llevarla conmigo</div>
+                <button wire:click="selectMobility('LAPTOP')" class="group p-8 bg-gradient-to-br from-white to-blue-50 border-2 border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">💻</div>
+                    <div class="font-bold text-lg text-slate-800 mb-2">Sí, Laptop</div>
+                    <div class="text-sm text-slate-500">Necesito llevarla conmigo</div>
                 </button>
 
-                <button wire:click="selectMobility('DESKTOP')" class="p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-indigo-500 text-center transition-all hover:shadow-md">
-                    <div class="text-4xl mb-3">🖥️</div>
-                    <div class="font-bold">No, PC Escritorio</div>
-                    <div class="text-xs text-slate-500 mt-1">Trabajaré en un lugar fijo</div>
+                <button wire:click="selectMobility('DESKTOP')" class="group p-8 bg-gradient-to-br from-white to-indigo-50 border-2 border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-xl hover:-translate-y-1 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🖥️</div>
+                    <div class="font-bold text-lg text-slate-800 mb-2">No, PC Escritorio</div>
+                    <div class="text-sm text-slate-500">Trabajaré en un lugar fijo</div>
                 </button>
 
-                <button wire:click="selectMobility('BOTH')" class="p-6 bg-white border-2 border-slate-200 rounded-xl hover:border-indigo-500 text-center transition-all hover:shadow-md">
-                    <div class="text-4xl mb-3">🤷</div>
-                    <div class="font-bold">Me da igual</div>
-                    <div class="text-xs text-slate-500 mt-1">Recomiéndame lo mejor</div>
+                <button wire:click="selectMobility('BOTH')" class="group p-8 bg-gradient-to-br from-white to-purple-50 border-2 border-slate-200 rounded-2xl hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 text-center transition-all duration-300">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🤷</div>
+                    <div class="font-bold text-lg text-slate-800 mb-2">Me da igual</div>
+                    <div class="text-sm text-slate-500">Recomiéndame lo mejor</div>
                 </button>
             </div>
         </div>
@@ -78,41 +106,45 @@
 
     @if ($step === 4)
         <div class="fade-in">
-            <div class="text-center mb-8">
-                <div class="inline-block p-2 bg-green-100 text-green-700 rounded-full mb-2 text-sm font-bold px-4">
-                    ¡Análisis Completado!
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full mb-4 shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <span class="font-bold text-sm">¡Análisis Completado!</span>
                 </div>
-                <h2 class="text-3xl font-bold">Tu Configuración Ideal</h2>
-                <p class="text-slate-500 mt-2">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-3">Tu Configuración Ideal</h2>
+                <p class="text-slate-600">
                     Basado en tu perfil: 
-                    <span class="font-semibold text-slate-800">
+                    <span class="font-bold text-indigo-600">
                         {{ \App\Models\Subcategory::find($selectedSubcategoryId)?->name }}
                     </span>
                 </p>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden mb-8">
+            <div class="bg-gradient-to-br from-slate-50 to-white rounded-2xl shadow-xl border-2 border-slate-200 overflow-hidden mb-8">
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-4">
+                    <h3 class="text-white font-bold text-lg">📋 Especificaciones Recomendadas</h3>
+                </div>
                 <table class="w-full text-left border-collapse">
-                    <thead class="bg-slate-50">
+                    <thead class="bg-slate-100">
                         <tr>
-                            <th class="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Componente</th>
-                            <th class="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Mínimo</th>
-                            <th class="p-4 text-xs font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50">Recomendado ⭐</th>
+                            <th class="p-4 text-xs font-bold text-slate-600 uppercase tracking-wider">Componente</th>
+                            <th class="p-4 text-xs font-bold text-slate-600 uppercase tracking-wider">Mínimo</th>
+                            <th class="p-4 text-xs font-bold text-indigo-700 uppercase tracking-wider bg-indigo-50">Recomendado ⭐</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         @forelse ($recommendations as $rec)
-                            <tr class="hover:bg-slate-50">
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
                                 <td class="p-4">
-                                    <div class="font-bold text-slate-700">{{ $rec->componentType->name }}</div>
+                                    <div class="font-bold text-slate-800">{{ $rec->componentType->name }}</div>
                                     @if($rec->reason)
-                                        <div class="text-xs text-slate-400 mt-1 italic">"{{ $rec->reason }}"</div>
+                                        <div class="text-xs text-slate-500 mt-1 italic">"{{ $rec->reason }}"</div>
                                     @endif
                                 </td>
                                 <td class="p-4 text-sm text-slate-600">
                                     {{ $rec->minSpec->name }}
                                 </td>
-                                <td class="p-4 text-sm font-semibold text-indigo-700 bg-indigo-50/50">
+                                <td class="p-4 text-sm font-bold text-indigo-700 bg-indigo-50/50">
                                     {{ $rec->recSpec->name }}
                                 </td>
                             </tr>
@@ -129,36 +161,39 @@
                 </table>
             </div>
 
-            <div class="text-center mb-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                <p class="text-sm text-yellow-800">Guarda tu código de referencia:</p>
-                <p class="text-2xl font-mono font-bold text-slate-800 tracking-widest">{{ $trackingCode }}</p>
+            <div class="text-center mb-8 bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-2xl border-2 border-yellow-200 shadow-lg">
+                <p class="text-sm font-semibold text-yellow-800 mb-2">🔑 Tu código de referencia:</p>
+                <p class="text-3xl font-mono font-extrabold text-slate-900 tracking-widest">{{ $trackingCode }}</p>
+                <p class="text-xs text-yellow-700 mt-2">Guárdalo para cotizar por WhatsApp</p>
             </div>
 
-            <h3 class="text-xl font-bold text-center mb-4">¿Cómo te gustaría proceder?</h3>
+            <h3 class="text-2xl font-bold text-center mb-6 text-slate-900">¿Cómo te gustaría proceder?</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 @foreach ($this->services as $service)
                     <button wire:click="selectServiceAndRedirect({{ $service->id }})" 
-                        class="block w-full text-left p-4 border border-slate-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all group">
+                        class="group block w-full text-left p-6 border-2 border-slate-200 rounded-2xl hover:border-green-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gradient-to-br from-white to-green-50">
                             
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="font-bold text-slate-700">{{ $service->name }}</span>
-                                <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="font-bold text-lg text-slate-800">{{ $service->name }}</span>
+                                <span class="bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold px-3 py-1.5 rounded-lg shadow-md">
                                     S/ {{ number_format($service->price, 2) }}
                                 </span>
                             </div>
                             
-                            <p class="text-sm text-slate-500 mb-3">{{ $service->description }}</p>
+                            <p class="text-sm text-slate-600 mb-4">{{ $service->description }}</p>
                             
-                            <div class="text-center w-full py-2 bg-green-500 text-white font-bold rounded-lg group-hover:bg-green-600 transition-colors">
-                                Solicitar por WhatsApp 💬
+                            <div class="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl group-hover:from-green-600 group-hover:to-emerald-600 transition-all shadow-md">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                <span>Solicitar por WhatsApp</span>
                             </div>
                         </button>
                 @endforeach
             </div>
 
             <div class="text-center">
-                <button wire:click="restart" class="text-slate-400 hover:text-slate-600 underline">
+                <button wire:click="restart" class="inline-flex items-center gap-2 px-6 py-3 text-slate-600 hover:text-indigo-600 font-semibold rounded-xl hover:bg-slate-100 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     Hacer otra consulta
                 </button>
             </div>

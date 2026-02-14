@@ -499,8 +499,8 @@
                     <h4 class="font-bold text-white mb-3">Contacto</h4>
                     <ul class="space-y-2 text-sm">
                         <li>📧 contacto@tupcideal.com</li>
-                        <li>📱 +51 999 999 999</li>
-                        <li>📍 Lima, Perú</li>
+                        <li>📱 +51 915 391 298</li>
+                        <li>📍 LTrujillo, Perú</li>
                     </ul>
                 </div>
             </div>

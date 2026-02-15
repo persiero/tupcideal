@@ -34,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->darkModeBrandLogo(asset('images/logo.png'))
             ->favicon(asset('images/favicon.png'))
             ->login()
-            ->registration()
+            //->registration()
             ->colors([
                 'primary' => Color::Indigo,
                 'success' => Color::Green,

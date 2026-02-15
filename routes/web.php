@@ -8,39 +8,42 @@ Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/diagnostico-login', function () {
-    // 1. Borrar toda la caché (Importante en Railway)
-    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
-    
+Route::get('/reinicio-total', function () {
+    // 1. Borrar toda la BD y volver a crearla desde cero con datos limpios
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
+            '--seed' => true,
+            '--force' => true
+        ]);
+        $dbMsg = "✅ Base de datos reiniciada y limpia (Sin duplicados).";
+    } catch (\Exception $e) {
+        return "❌ Error en base de datos: " . $e->getMessage();
+    }
+
+    // 2. Crear tu Usuario Admin ÚNICO
     $email = 'admin@tupcideal.com';
     $password = 'admin123';
-    
-    // 2. Buscar al usuario
-    $user = \App\Models\User::where('email', $email)->first();
-    
-    echo "<h1>Diagnóstico de Login</h1>";
-    echo "Running on: " . app()->environment() . "<br>";
-    
-    if (!$user) {
-        return "<h2 style='color:red'>❌ El usuario NO existe en la base de datos.</h2>";
+
+    try {
+        // Borramos si existiera (aunque migrate:fresh ya lo hizo) y creamos
+        \App\Models\User::create([
+            'name' => 'Admin Percy',
+            'email' => $email,
+            'password' => \Illuminate\Support\Facades\Hash::make($password),
+        ]);
+        $userMsg = "✅ Usuario Admin creado correctamente.";
+    } catch (\Exception $e) {
+        $userMsg = "⚠️ El usuario ya existía por el seeder.";
     }
-    
-    echo "<h2 style='color:green'>✅ El usuario SÍ existe (ID: {$user->id})</h2>";
-    
-    // 3. Verificar si la contraseña coincide matemáticamente
-    if (\Illuminate\Support\Facades\Hash::check($password, $user->password)) {
-        echo "<h2 style='color:green'>✅ La contraseña es CORRECTA (Matemáticamente)</h2>";
-        
-        // 4. Intentar loguear manualmente
-        if (\Illuminate\Support\Facades\Auth::attempt(['email' => $email, 'password' => $password])) {
-            return "<h2 style='color:green'>🎉 ¡Login exitoso! El sistema te ha autenticado. <br> <a href='/sistema-interno'>Ir al Panel ahora</a></h2>";
-        } else {
-            return "<h2 style='color:orange'>⚠️ La contraseña coincide, pero Auth::attempt falló. Revisa si el usuario está activo o bloqueado.</h2>";
-        }
-    } else {
-        // Si no coincide, la forzamos de nuevo
-        $user->password = \Illuminate\Support\Facades\Hash::make($password);
-        $user->save();
-        return "<h2 style='color:red'>❌ La contraseña NO coincidía. <br>🔧 SE HA FORZADO UNA NUEVA CONTRASEÑA AHORA MISMO.<br>Recarga esta página para probar de nuevo.</h2>";
-    }
+
+    // 3. Limpiar caché para asegurar login
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+
+    return "<h1>Mantenimiento Completado</h1>
+            <p>$dbMsg</p>
+            <p>$userMsg</p>
+            <p>Usuario: <b>$email</b></p>
+            <p>Clave: <b>$password</b></p>
+            <br>
+            <a href='/sistema-interno'>👉 IR AL LOGIN AHORA</a>";
 });

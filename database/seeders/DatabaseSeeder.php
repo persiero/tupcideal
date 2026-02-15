@@ -164,5 +164,12 @@ class DatabaseSeeder extends Seeder
             'price' => 120.00,
             'is_active' => true
         ]);
+
+        SupportService::create([
+            'name' => 'Otras Consultas Técnicas',
+            'description' => 'Consultas generales, sobre equipos informáticos, hardware y software.',
+            'price' => 30.00,
+            'is_active' => true
+        ]);
     }
 }

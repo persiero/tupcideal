@@ -48,6 +48,13 @@ class CategoryResource extends Resource
             Textarea::make('description')
                 ->label('Descripción (Opcional)'),
 
+            // Campo para el Ícono (Emoji)
+            TextInput::make('icon')
+                ->maxLength(50)
+                ->label('Ícono (Emoji)')
+                ->placeholder('Ej: 📚, 💼, 🎮')
+                ->helperText('Usa un emoji que represente esta categoría'),
+
             // Switch para Activo/Inactivo
             Toggle::make('is_active')
                 ->label('¿Está visible?')
@@ -62,6 +69,11 @@ class CategoryResource extends Resource
             // Columna ID
             TextColumn::make('id')
                 ->sortable(),
+
+            // Columna Ícono
+            TextColumn::make('icon')
+                ->label('Ícono')
+                ->default('💼'),
 
             // Columna Nombre
             TextColumn::make('name')

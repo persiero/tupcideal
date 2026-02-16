@@ -43,6 +43,7 @@
                     <a href="#inicio" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all">Inicio</a>
                     <a href="#como-funciona" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all">¿Cómo funciona?</a>
                     <a href="#casos" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all">Testimonios</a>
+                    <a href="#contacto" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all">Contacto</a>
                     
                     <div class="h-6 w-px bg-slate-200 mx-2"></div> <a href="#wizard" class="ml-2 px-6 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-full hover:bg-indigo-600 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 transition-all duration-300">
                         Comenzar Gratis
@@ -190,33 +191,36 @@
     </section>
 
     <!-- FEATURES -->
-    <section id="como-funciona" class="py-12 px-4 bg-white">
+    <section id="como-funciona" class="py-16 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-2xl font-bold text-center mb-8 text-slate-800">¿Cómo funciona?</h3>
+            <h3 class="text-3xl font-bold text-center mb-4 text-slate-800">¿Cómo funciona?</h3>
+            <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+                Tres pasos simples para encontrar tu equipo ideal
+            </p>
             
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center">
-                    <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span class="text-2xl">🎯</span>
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span class="text-3xl">🎯</span>
                     </div>
-                    <h4 class="font-bold text-base mb-2">1. Define tu perfil</h4>
-                    <p class="text-sm text-slate-600">Estudiante, profesional, gamer... Selecciona tu uso principal</p>
+                    <h4 class="font-bold text-lg mb-3 text-slate-800">1. Define tu perfil</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Estudiante, profesional, gamer... Selecciona el uso principal que le darás a tu equipo</p>
                 </div>
 
                 <div class="text-center">
-                    <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span class="text-2xl">💻</span>
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span class="text-3xl">💻</span>
                     </div>
-                    <h4 class="font-bold text-base mb-2">2. Elige movilidad</h4>
-                    <p class="text-sm text-slate-600">¿Laptop portátil o PC de escritorio potente?</p>
+                    <h4 class="font-bold text-lg mb-3 text-slate-800">2. Elige tu movilidad</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">¿Laptop portátil o PC de escritorio? Selecciona según tu estilo de trabajo</p>
                 </div>
 
                 <div class="text-center">
-                    <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span class="text-2xl">✅</span>
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span class="text-3xl">✅</span>
                     </div>
-                    <h4 class="font-bold text-base mb-2">3. Recibe recomendación</h4>
-                    <p class="text-sm text-slate-600">Especificaciones exactas y opción de cotizar por WhatsApp</p>
+                    <h4 class="font-bold text-lg mb-3 text-slate-800">3. Recibe tu recomendación</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Obtén especificaciones exactas y cotiza directamente por WhatsApp</p>
                 </div>
             </div>
         </div>
@@ -225,38 +229,41 @@
     <!-- BENEFITS -->
     <section class="py-16 px-4 bg-slate-900 text-white">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12">¿Por qué usar nuestro recomendador?</h3>
+            <h3 class="text-3xl font-bold text-center mb-4">¿Por qué elegirnos?</h3>
+            <p class="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
+                Beneficios de usar nuestro recomendador inteligente
+            </p>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="flex gap-4">
-                    <div class="text-3xl">🚀</div>
+                    <div class="text-4xl flex-shrink-0">🚀</div>
                     <div>
-                        <h4 class="font-bold text-lg mb-2">Ahorra tiempo</h4>
-                        <p class="text-slate-300">No pierdas horas investigando. Te damos la respuesta en 2 minutos.</p>
+                        <h4 class="font-bold text-xl mb-2">Ahorra tiempo</h4>
+                        <p class="text-slate-300">No pierdas horas investigando. Obtén la respuesta perfecta en menos de 2 minutos.</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
-                    <div class="text-3xl">💰</div>
+                    <div class="text-4xl flex-shrink-0">💰</div>
                     <div>
-                        <h4 class="font-bold text-lg mb-2">Evita errores costosos</h4>
-                        <p class="text-slate-300">Compra exactamente lo que necesitas, sin gastar de más.</p>
+                        <h4 class="font-bold text-xl mb-2">Evita errores costosos</h4>
+                        <p class="text-slate-300">Compra exactamente lo que necesitas, sin gastar de más ni quedarte corto.</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
-                    <div class="text-3xl">🎓</div>
+                    <div class="text-4xl flex-shrink-0">🎓</div>
                     <div>
-                        <h4 class="font-bold text-lg mb-2">Basado en expertos</h4>
-                        <p class="text-slate-300">Recomendaciones creadas por profesionales del sector.</p>
+                        <h4 class="font-bold text-xl mb-2">Respaldado por expertos</h4>
+                        <p class="text-slate-300">Recomendaciones creadas y actualizadas por profesionales del sector tecnológico.</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
-                    <div class="text-3xl">📱</div>
+                    <div class="text-4xl flex-shrink-0">📱</div>
                     <div>
-                        <h4 class="font-bold text-lg mb-2">Cotiza al instante</h4>
-                        <p class="text-slate-300">Contacta directamente por WhatsApp con tu código de referencia.</p>
+                        <h4 class="font-bold text-xl mb-2">Cotización instantánea</h4>
+                        <p class="text-slate-300">Contacta directamente por WhatsApp con tu código único de referencia.</p>
                     </div>
                 </div>
             </div>

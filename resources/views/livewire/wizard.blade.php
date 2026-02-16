@@ -14,29 +14,41 @@
 
     @if ($step === 1)
         <div class="fade-in">
-            <div class="text-center mb-8">
-                <div class="inline-block p-2 bg-indigo-100 rounded-full mb-3">
-                    <span class="text-3xl">🎯</span>
+            <div class="text-center mb-12">
+                <div class="inline-block p-4 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl mb-4 shadow-lg">
+                    <span class="text-5xl">🎯</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-2 text-slate-900">¿Cuál será el uso principal?</h2>
-                <p class="text-slate-500">Elige la opción que mejor te describa</p>
+                <h2 class="text-4xl font-extrabold mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">¿Para qué necesitas tu computadora?</h2>
+                <p class="text-lg text-slate-600">Selecciona el uso principal que le darás</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
                 @foreach ($categories as $category)
                     <button wire:click="selectCategory({{ $category->id }})" 
-                            class="group p-6 bg-gradient-to-br from-white to-slate-50 border-2 border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left">
-                        <div class="flex items-start gap-3">
-                            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                                💼
+                            class="group relative p-8 bg-white border-2 border-slate-200 rounded-3xl hover:border-indigo-400 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left overflow-hidden">
+                        <!-- Efecto de fondo animado -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        
+                        <div class="relative flex items-start gap-5">
+                            <!-- Ícono personalizado -->
+                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                                {{ $category->icon ?? '💼' }}
                             </div>
-                            <div class="flex-1">
-                                <h3 class="font-bold text-lg text-slate-800 group-hover:text-indigo-700 mb-1">
+                            
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-bold text-xl text-slate-900 group-hover:text-indigo-700 mb-2 transition-colors">
                                     {{ $category->name }}
                                 </h3>
                                 @if($category->description)
-                                    <p class="text-sm text-slate-500">{{ $category->description }}</p>
+                                    <p class="text-sm text-slate-600 leading-relaxed">{{ $category->description }}</p>
                                 @endif
+                            </div>
+                            
+                            <!-- Flecha indicadora -->
+                            <div class="flex-shrink-0 text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all duration-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
                             </div>
                         </div>
                     </button>
@@ -56,7 +68,7 @@
                 <div class="inline-block p-2 bg-purple-100 rounded-full mb-3">
                     <span class="text-3xl">🔍</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-2 text-slate-900">Profundicemos un poco...</h2>
+                <h2 class="text-3xl font-bold mb-2 text-slate-900">Cuéntanos un poco más...</h2>
                 <p class="text-slate-500">Selecciona tu área específica</p>
             </div>
 
@@ -78,7 +90,7 @@
                 <div class="inline-block p-2 bg-blue-100 rounded-full mb-3">
                     <span class="text-3xl">💼</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-2 text-slate-900">¿Necesitas movilidad?</h2>
+                <h2 class="text-3xl font-bold mb-2 text-slate-900">¿Necesitas llevar tu equipo contigo?</h2>
                 <p class="text-slate-500">Elige según tu estilo de trabajo</p>
             </div>
 

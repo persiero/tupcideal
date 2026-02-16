@@ -151,9 +151,32 @@ class Wizard extends Component
             ]);
         }
 
-        // 3. Generamos el link específico para ese servicio
-        $serviceName = SupportService::find($serviceId)->name;
-        $whatsappLink = $this->whatsappUrl . "&text=" . urlencode(" Me interesa el servicio: " . $serviceName);
+        // 3. Generamos el mensaje completo con código de referencia y servicio
+        $service = SupportService::find($serviceId);
+        $perfil = Subcategory::find($this->selectedSubcategoryId)?->name ?? 'General';
+        $tipoEquipo = match($this->mobilityPreference) {
+            'LAPTOP' => 'una Laptop',
+            'DESKTOP' => 'una PC de Escritorio',
+            default => 'un Equipo (Laptop o PC)',
+        };
+
+        $mensaje = "👋 Hola, mi código de recomendación es: *{$this->trackingCode}*\n\n";
+        $mensaje .= "🎯 *Servicio de interés:* {$service->name}\n";
+        $mensaje .= "💰 *Precio:* S/ " . number_format($service->price, 2) . "\n\n";
+        $mensaje .= "📋 *Mi Perfil:* {$perfil}\n";
+        $mensaje .= "💻 *Busco:* {$tipoEquipo}\n\n";
+        $mensaje .= "*Especificaciones recomendadas:*\n";
+
+        foreach($this->recommendations as $rec) {
+            $componente = $rec->componentType->name;
+            $modelo = $rec->recSpec->name;
+            $mensaje .= "• {$componente}: {$modelo}\n";
+        }
+
+        $mensaje .= "\n✅ Quisiera más información sobre este servicio.";
+
+        $numero = '51915391298';
+        $whatsappLink = "https://wa.me/{$numero}?text=" . urlencode($mensaje);
 
         // 4. Redireccionamos a WhatsApp
         return redirect()->away($whatsappLink);
